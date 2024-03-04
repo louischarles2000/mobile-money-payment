@@ -1,7 +1,7 @@
 # Mobile Money Payment Demo
 
 ## Live Site URL 🌐
-
+https://mobile-money-payment.vercel.app/
 
 ## Setup and Run
 
