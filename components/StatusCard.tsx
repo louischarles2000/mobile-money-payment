@@ -4,24 +4,47 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card';
 import Cookie from 'universal-cookie';
 import { useRouter } from 'next/navigation';
+import { getMomoToken } from '@/utilities';
 
-function StatusCard(props: { refId: string }) {
+function StatusCard(props: { refId: string, operation: string }) {
   const cookie = new Cookie();
   const router = useRouter();
   const [ transaction, setTransaction ] = useState<any>(null);
   const [ loading, setLoading ] = useState(true);
+  const [ momoToken, setMomoToken ] = useState(null);
+  const [ error, setError ] = useState<any>(null);
+
 
   useEffect(() => {
+    (async() => {
+      try {
+        const url = props.operation === 'transfer' ? '/api/momo/disbursements/token' : '/api/momo/token';
+        const token = await getMomoToken(url);
+        setMomoToken(token);
+      } catch (error) {
+        setError(error);
+      }
+    })()
+  }, [])
+  
+  useEffect(() => {
+    if(!momoToken) return;
+
     (async () => {
-      const token = cookie.get('token');
+      // const token = cookie.get('token');
+      const url = props.operation === 'transfer' ? '/api/momo/disbursements' : '/api/momo/request_to_pay';
+
+      console.log(url);
       console.log(props.refId)  
       try {
         const res = await axios({
           method: 'post',
-          url: `/api/momo/request_to_pay/${props.refId}`,       
-          data: { momoToken: token }
+          url: `${url}/${props.refId}`,       
+          data: { momoToken }
         });
+
         console.log(res)
+
         const transaction_status = res.data;
         setTransaction(transaction_status);
         setLoading(false);
@@ -30,7 +53,7 @@ function StatusCard(props: { refId: string }) {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [momoToken]);
 
   if (loading) {
     return (
@@ -60,7 +83,11 @@ function StatusCard(props: { refId: string }) {
         <p className='text-sm'>Financial Transaction ID: {transaction.financialTransactionId}</p>
       </div>
       <div className='w-full justify-between items-center'>
-        <p className='text-sm'>Payer: {transaction.payer.partyId}</p>
+        {transaction.payer ? (
+          <p className='text-sm'>Payer: {transaction.payer.partyId}</p>
+        ) : (
+          <p className='text-sm'>Payee: {transaction.payee.partyId}</p>
+        )}
         <p className='text-sm'>Payer Message: {transaction.payerMessage}</p>
       </div>
       <p className='text-sm w-full'>Payee Note: {transaction.payeeNote}</p>

@@ -6,6 +6,7 @@ import axios from 'axios'
 import { v4 as uuid4 } from 'uuid'
 import { useRouter } from 'next/navigation'
 import Cookie from 'universal-cookie'
+import { getRandomPrice } from '@/utilities'
 
 const EXTERNAL_ID = "7835794"
 
@@ -16,10 +17,12 @@ function MTNProductCard(props: {  }) {
   const [ momoResponse, setMomoResponse ] = useState(null);
   const [ error, setError ] = useState(null);
   const [ phoneNumber, setPhoneNumber ] = useState('256775605783');
-  const [ loading, setLoading ] = useState(false)
+  const [ loading, setLoading ] = useState(false);
+  const [ price, setPrice ] = useState(0);
 
   useEffect(() => {
     getMomoToken();
+    setPrice(getRandomPrice());
   }, []);
 
   const handleSubmit = async () => {
@@ -32,9 +35,9 @@ function MTNProductCard(props: {  }) {
     setLoading(true);
 
     const body = {
-      amount: 990 + '',
+      amount: (price + (price * .1)) + '',
       currency: 'EUR',
-      externalId: EXTERNAL_ID,
+      // externalId: EXTERNAL_ID,
       payer: {
         partyIdType: 'MSISDN',
         partyId: phoneNumber
@@ -49,7 +52,7 @@ function MTNProductCard(props: {  }) {
       if(res.status === 202){
         console.log(res);
         cookie.set('token', momoToken);
-        router.replace(`/mtn/transaction_status?refId=${res.data.ref_id}`);
+        router.replace(`/mtn/transaction_status?refId=${res.data.ref_id}&action=collection`);
         return
       }
     } catch (error) {
@@ -93,7 +96,7 @@ function MTNProductCard(props: {  }) {
               className='text-sm'
               title='HP ProBook 450 G10 – Core i5 13th Gen, 16GB RAM, 512GB SSD'
               >HP ProBook 450 G10 – Core i5 13th Gen...</p>
-            <p className='text-sm font-bold'>€ 900</p>
+            <p className='text-sm font-bold'>€ {price}</p>
           </div>
           <div className='flex justify-between items-center w-full'>
             <p className='text-sm font-normal text-[#555]'>Tax</p>
@@ -101,7 +104,7 @@ function MTNProductCard(props: {  }) {
           </div>
           <div className='flex justify-between items-center w-full'>
             <p className='text-sm font-normal text-[#555]'>Total</p>
-            <p className='text-sm font-bold'>€ 990</p>
+            <p className='text-sm font-bold'>€ {price + (price * .1)}</p>
           </div>
           <div className='w-full'>
             <label className='flex justify-between items-center w-full gab-4'>
