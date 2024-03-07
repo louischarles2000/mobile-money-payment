@@ -38,9 +38,9 @@ function DisbursementsTable() {
             <p className='font-bold'>{transactions.length} Transactions</p>
             <Link href={'/mtn/disbursements/transfer'}>
             <Button 
-                placeholder={undefined}
                 onClick={() => {}}
                 size='sm'
+                placeholder={undefined}
                 >
                 Make Transfer
             </Button>
