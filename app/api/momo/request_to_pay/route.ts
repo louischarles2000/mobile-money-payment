@@ -2,12 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from 'axios'
 import { v4 as uuid4 } from 'uuid'
 import { db } from '@vercel/postgres'
-import crypto from 'crypto'
-
-export function generateSixDigitNumber() {
-  const randomNumber = crypto.randomBytes(3).readUIntBE(0, 3);
-  return String(randomNumber).padStart(6, '0');
-}
+import { generateSixDigitNumber } from "@/utilities";
 
 export const POST = async (request: NextRequest) => {
   const { 

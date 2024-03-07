@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from 'axios'
 import { v4 as uuid4 } from 'uuid'
 import { db } from '@vercel/postgres'
-import crypto from 'crypto'
-import { generateSixDigitNumber } from "../request_to_pay/route";
+import { generateSixDigitNumber } from "@/utilities";
 
 export const POST = async (request: NextRequest) => {
   const { 
