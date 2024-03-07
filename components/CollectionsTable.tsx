@@ -40,6 +40,7 @@ function CollectionsTable() {
             <Button 
                 onClick={() => {}}
                 size='sm'
+                placeholder={undefined}
                 >
                 Simulate Collection
             </Button>
@@ -54,7 +55,7 @@ function CollectionsTable() {
                 </div>
             ))}
         </div> */}
-        <Card className="h-full w-full overflow-scroll">
+        <Card className="h-full w-full overflow-scroll" placeholder={undefined}>
             <table className="w-full min-w-max table-auto text-left">
                 <thead>
                     <tr>
@@ -66,6 +67,7 @@ function CollectionsTable() {
                             <Typography
                             variant="small"
                             color="blue-gray"
+                            placeholder={undefined}
                             className="font-normal leading-none opacity-70"
                             >
                             {head}
@@ -86,6 +88,7 @@ function CollectionsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {id}
                             </Typography>
@@ -95,6 +98,7 @@ function CollectionsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {externalid}
                             </Typography>
@@ -104,6 +108,7 @@ function CollectionsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {payerpartyid}
                             </Typography>
@@ -113,6 +118,7 @@ function CollectionsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {amount}
                             </Typography>
@@ -122,6 +128,7 @@ function CollectionsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {status}
                             </Typography>
