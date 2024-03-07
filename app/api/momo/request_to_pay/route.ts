@@ -47,7 +47,7 @@ export const POST = async (request: NextRequest) => {
   }
 }
 
-export const saveCollectionToDatabase = async (url: string, key: string, momoToken: string, ref: string) => {
+const saveCollectionToDatabase = async (url: string, key: string, momoToken: string, ref: string) => {
   const client = await db.connect();
   try {
     const res = await axios({
