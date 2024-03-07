@@ -17,8 +17,8 @@ export const POST = async (request: NextRequest) => {
       console.log(res.data)
     
     return NextResponse.json({ ...res.data }, { status: 200 })
-   } catch (error) {
-    console.log(error.message)
+   } catch (error: any) {
+    // console.log(error.message)
     return NextResponse.json({ error }, { status: 500 })
    }
 }
