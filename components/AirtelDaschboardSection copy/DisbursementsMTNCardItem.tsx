@@ -26,7 +26,7 @@ function DisbursementsMTNCardItem() {
   // }, [transfers]);
 
   return (
-    <Card className='rounded-sm p-3 min-w-[15rem] min-h-[6.5rem] bg-[#fab1a0] text-white space-y-1'>
+    <Card className='rounded-sm p-3 min-w-[15rem] min-h-[6.5rem] bg-[#fab1a0] text-white space-y-1' placeholder={undefined}>
       <p className='font-bold text-sm'>Disbursements (Money Out)</p>
       <p className='font-light text-2xl'>{total} €</p>
       <p className='font-normal text-sm'>Total transfers: {transfers.length}</p>

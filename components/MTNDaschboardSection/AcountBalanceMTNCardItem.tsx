@@ -19,7 +19,7 @@ function AcountBalanceMTNCardItem() {
   }, []);
 
   return (
-    <Card className='rounded-sm p-3 min-w-[15rem] min-h-[6.5rem] bg-[#1abc9c] text-white space-y-4'>
+    <Card className='rounded-sm p-3 min-w-[15rem] min-h-[6.5rem] bg-[#1abc9c] text-white space-y-4' placeholder={undefined}>
       <p className='font-bold text-sm'>Account Balance</p>
       <p className='font-light text-2xl'>{balance.availableBalance} €</p>
     </Card>

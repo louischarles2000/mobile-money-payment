@@ -26,7 +26,7 @@ function CollectionsMTNCardItem() {
   // }, [collections]);
 
   return (
-    <Card className='rounded-sm p-3 min-w-[15rem] min-h-[6rem] bg-[#74b9ff] text-white space-y-1'>
+    <Card className='rounded-sm p-3 min-w-[15rem] min-h-[6rem] bg-[#74b9ff] text-white space-y-1' placeholder={undefined}>
       <p className='font-bold text-sm'>Collections (Money In)</p>
       <p className='font-light text-2xl'>{0} €</p>
       <p className='font-normal text-sm'>Total collections: {0}</p>

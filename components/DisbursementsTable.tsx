@@ -38,6 +38,7 @@ function DisbursementsTable() {
             <p className='font-bold'>{transactions.length} Transactions</p>
             <Link href={'/mtn/disbursements/transfer'}>
             <Button 
+                placeholder={undefined}
                 onClick={() => {}}
                 size='sm'
                 >
@@ -54,7 +55,10 @@ function DisbursementsTable() {
                 </div>
             ))}
         </div> */}
-        <Card className="h-full w-full overflow-scroll">
+        <Card 
+            className="h-full w-full overflow-scroll"
+            placeholder={undefined}
+            >
             <table className="w-full min-w-max table-auto text-left">
                 <thead>
                     <tr>
@@ -64,11 +68,12 @@ function DisbursementsTable() {
                             className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
                         >
                             <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal leading-none opacity-70"
-                            >
-                            {head}
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal leading-none opacity-70"
+                                placeholder={undefined}
+                                >
+                                {head}
                             </Typography>
                         </th>
                         ))}
@@ -86,6 +91,7 @@ function DisbursementsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {id}
                             </Typography>
@@ -95,6 +101,7 @@ function DisbursementsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {externalid}
                             </Typography>
@@ -104,6 +111,7 @@ function DisbursementsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {payerpartyid}
                             </Typography>
@@ -113,6 +121,7 @@ function DisbursementsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {amount}
                             </Typography>
@@ -122,6 +131,7 @@ function DisbursementsTable() {
                                 variant="small"
                                 color="blue-gray"
                                 className="font-normal"
+                                placeholder={undefined}
                             >
                                 {status}
                             </Typography>

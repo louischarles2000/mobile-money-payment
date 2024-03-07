@@ -1,5 +1,5 @@
 'use client'
-import { Button, Card, Input, Textarea } from '@material-tailwind/react'
+import { Input, Button, Card, Textarea } from '@/components/MUI'
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -72,17 +72,21 @@ function TransferCard() {
     }
     
   return (
-    <Card className='w-[60%] mx-auto my-6 p-5'>
+    <Card 
+      className='w-[60%] mx-auto my-6 p-5'
+      placeholder={undefined}
+      >
         <p className='text-center'>Make Payment</p>
         <div className='space-y-4 mt-5'>
-            <Input 
-                label='Phone Number'
-                placeholder='Enter Number'
-                type='tel'
-                name='phone'
-                value={phone}
-                onChange={e => setPhone(e.target.value)}
-                />
+            <Input
+              label='Phone Number'
+              placeholder='Enter Number'
+              type='tel'
+              name='phone'
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+              crossOrigin={undefined}
+              />
             
             <Input 
                 label='Amount(€)'
@@ -90,6 +94,7 @@ function TransferCard() {
                 placeholder='Enter Amount'
                 value={amount}
                 onChange={e => setAmount(parseInt(e.target.value))}
+                crossOrigin={undefined}
                 />
             
             <Textarea 
@@ -103,6 +108,7 @@ function TransferCard() {
                 onClick={handleTransfer}
                 disabled={loading}
                 className='w-full bg-[#273c75]'
+                placeholder={undefined}
                 >
                 {loading ? 'Loading...' : 'Transfer Money'}
             </Button>
